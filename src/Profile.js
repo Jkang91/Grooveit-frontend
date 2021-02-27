@@ -1,0 +1,9 @@
+function Profile() {
+    return(
+        <div>
+            <h1>I am a profile</h1>
+        </div>
+    )
+}
+
+export default Profile;

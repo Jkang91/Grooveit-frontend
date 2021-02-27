@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+// import logo from './logo.svg';
+// import './App.css';
+import Nav from "./Nav";
+import Displaycontainer from "./Displaycontainer";
+import { useState, useEffect } from "react";
 
 function App() {
+  const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/me")
+      .then((resp) => resp.json())
+      .then(setCurrentUser)
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Nav currentUser={currentUser} setCurrentUser={setCurrentUser} />
+      <Displaycontainer currentUser={currentUser} setCurrentUser={setCurrentUser} />
     </div>
   );
 }
