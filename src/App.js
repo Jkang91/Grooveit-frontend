@@ -8,9 +8,21 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3000/me")
-      .then((resp) => resp.json())
-      .then(setCurrentUser)
+    const token = localStorage.getItem("token");
+    if (token) {
+      console.log(token)
+      fetch("http://localhost:3000/me", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((r) => r.json())
+        .then((user) => {
+          // set the user in state
+          setCurrentUser(user)
+          console.log(user)
+        });
+    }
   }, [])
 
   return (

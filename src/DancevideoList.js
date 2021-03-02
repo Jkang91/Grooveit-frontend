@@ -1,10 +1,15 @@
 import Dancevideo from "./Dancevideo";
 
 
-function DancevideoList({ danceVideos }) {
-    
+function DancevideoList({ danceVideos, currentUser, onAddFavorite }) {
+
     const tutorialVideos = danceVideos.map((video) => {
-        return <Dancevideo key={video.id} video={video}/>
+        return <Dancevideo
+            key={video.id}
+            video={video}
+            currentUser={currentUser}
+            onAddFavorite={onAddFavorite}
+        />
     })
     return (
         <div>
