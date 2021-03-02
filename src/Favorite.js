@@ -1,7 +1,14 @@
 import ReactPlayer from "react-player";
 
-function Favorite({ favorite }) {
+function Favorite({ favorite, onDeleteFav }) {
     const {dance_video} = favorite
+
+    function handleDelete(){
+        fetch(`http://localhost:3000/favorites/${favorite.id}`, {
+            method: "DELETE"
+        })
+        .then(deletedComment => onDeleteFav(favorite))
+    }
 
     return (
         <div>
@@ -9,6 +16,7 @@ function Favorite({ favorite }) {
             <h2>{dance_video.title}</h2>
             <h4>{dance_video.category}</h4>
             <p>{dance_video.difficulty_level}</p>
+            <button onClick={() => handleDelete()}>Remove</button>
         </div>
     )
 }

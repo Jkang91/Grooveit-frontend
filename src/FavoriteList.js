@@ -1,9 +1,9 @@
 import Favorite from "./Favorite";
 
-function FavoriteList({ favorites, currentUser }) {
+function FavoriteList({ favorites, currentUser, onDeleteFav }) {
     const favoritesList = favorites.map((favorite) => {
         if(favorite.user_id === currentUser.id){
-        return <Favorite key={favorite.id} favorite={favorite} />
+        return <Favorite key={favorite.id} favorite={favorite} onDeleteFav={onDeleteFav}/>
         }
     })
 

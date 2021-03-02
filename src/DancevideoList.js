@@ -1,9 +1,28 @@
 import Dancevideo from "./Dancevideo";
-
+import { useState } from "react";
+import FilterTutorial from "./FilterTutorial"
 
 function DancevideoList({ danceVideos, currentUser, onAddFavorite }) {
+    const [searchTerm, setSearchTerm] = useState("")
+    const [level, setLevel] = useState("All")
 
-    const tutorialVideos = danceVideos.map((video) => {
+    const filteredVideos = danceVideos.filter((video) => {
+        return video.title.toLowerCase().includes(searchTerm.toLowerCase())
+    })
+
+    const filteredVideos2 = filteredVideos.filter((video) => {
+        console.log(video)
+        if (video.difficulty_level === level){
+            return video
+        } else if(level === "All"){
+            return video
+        }
+    })
+
+    
+    console.log(danceVideos.difficutly_level)
+    console.log(filteredVideos2)
+    const tutorialVideos = filteredVideos2.map((video) => {
         return <Dancevideo
             key={video.id}
             video={video}
@@ -11,9 +30,23 @@ function DancevideoList({ danceVideos, currentUser, onAddFavorite }) {
             onAddFavorite={onAddFavorite}
         />
     })
+
+    function handleChange2(e){
+        setLevel(e.target.value)
+        console.log(e.target.value)
+    }
+
     return (
         <div>
             <h1>I am a DancevideoList</h1>
+            <FilterTutorial searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+            <label>Difficulty: </label>
+            <select onChange={handleChange2}>
+                <option value="All">All</option>
+                <option value="beginner">beginner</option>
+                <option value="intermediate">intermediate</option>
+                <option value="advanced">advanced</option>
+            </select>
             {tutorialVideos}
         </div>
     )
