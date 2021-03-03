@@ -5,7 +5,7 @@ import Displaycontainer from "./Displaycontainer";
 import { useState, useEffect } from "react";
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState([]);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
