@@ -19,8 +19,6 @@ function DancevideoList({ danceVideos, currentUser, onAddFavorite }) {
         }
     })
 
-    
-    console.log(danceVideos.difficutly_level)
     console.log(filteredVideos2)
     const tutorialVideos = filteredVideos2.map((video) => {
         return <Dancevideo
@@ -38,7 +36,7 @@ function DancevideoList({ danceVideos, currentUser, onAddFavorite }) {
 
     return (
         <div>
-            <h1>I am a DancevideoList</h1>
+            <h1>Tutorials</h1>
             <FilterTutorial searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
             <label>Difficulty: </label>
             <select onChange={handleChange2}>

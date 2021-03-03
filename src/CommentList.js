@@ -1,16 +1,17 @@
 import Comment from "./Comment";
 
-function CommentList({ comments, onDelete }) {
+function CommentList({ comments, onDelete, currentUser }) {
     const commentsList = comments.map((comm) => {
         return <Comment
             key={comm.id}
             comm={comm}
             onDelete={onDelete}
+            currentUser={currentUser}
         />
     })
     return (
         <div>
-            <h3>I am a Comment List</h3>
+            <h3>Comments: </h3>
             {commentsList}
         </div>
     )

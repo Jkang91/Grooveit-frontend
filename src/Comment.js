@@ -1,5 +1,5 @@
 
-function Comment({ comm, onDelete }) {
+function Comment({ comm, onDelete, currentUser }) {
     const { comment } = comm
 
     function handleDelete() {
@@ -12,7 +12,7 @@ function Comment({ comm, onDelete }) {
     return (
         <div>
             <p>{comm.user.username}: {comment} </p>
-            <button onClick={() => handleDelete()}>Delete</button>
+            {comm.user.id === currentUser.id? <button onClick={() => handleDelete()}>Delete</button> : false}
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import ReactPlayer from "react-player";
 
-function Favorite({ favorite, onDeleteFav }) {
+function Favorite({ favorite, onDeleteFav, currentUser }) {
     const {dance_video} = favorite
 
     function handleDelete(){
@@ -16,7 +16,7 @@ function Favorite({ favorite, onDeleteFav }) {
             <h2>{dance_video.title}</h2>
             <h4>{dance_video.category}</h4>
             <p>{dance_video.difficulty_level}</p>
-            <button onClick={() => handleDelete()}>Remove</button>
+            {favorite.user_id === currentUser.id ? <button onClick={() => handleDelete()}>Remove</button> : false}
         </div>
     )
 }

@@ -31,16 +31,15 @@ function Dancevideo({ video, currentUser, onAddFavorite }) {
         <div>
             <ReactPlayer url={video.url} />
             <h2>{video.title}</h2>
-            <h2>{video.category}</h2>
-            <h2>{video.difficulty_level}</h2>
+            <h2>Category: {video.category}</h2>
+            <h2>Difficulty: {video.difficulty_level}</h2>
             <Rating />
             <FavoriteForm 
             currentUser={currentUser} 
             video={video} 
             onAddFavorite={onAddFavorite}/>
             <div>
-                Comments:
-                <CommentList comments={comments} onDelete={onDelete} />
+                <CommentList comments={comments} onDelete={onDelete} currentUser={currentUser} />
             </div>
             <CommentForm 
             currentUser={currentUser} 
