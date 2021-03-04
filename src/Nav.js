@@ -21,7 +21,7 @@ function Nav({ currentUser, setCurrentUser }) {
                     <NavLink to="/favorites">Favorites</NavLink><br></br>
                     <NavLink to="/dance_videos">Tutorials</NavLink><br></br>
                     <NavLink to="/user_videos">My videos</NavLink><br></br>
-                    <NavLink to="/profile">Profile</NavLink><br></br>
+                    <NavLink to="/me">Profile</NavLink><br></br>
                     <NavLink to="/logout" onClick={logOut}>Log out</NavLink>
                 </>
             )

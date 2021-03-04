@@ -66,7 +66,7 @@ function Displaycontainer({ currentUser, setCurrentUser }) {
                 <Route path="/user_videos">
                     <UservideoList userVideos={userVideos} currentUser={currentUser} onAddUserVideo={onAddUserVideo} />
                 </Route>
-                <Route path="users/me">
+                <Route path="/me">
                     <Profile />
                 </Route>
                 <Route path="/signup">

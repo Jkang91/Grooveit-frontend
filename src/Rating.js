@@ -2,7 +2,7 @@ import ReactStars from "react-rating-stars-component";
 import { useState } from 'react';
 
 function Rating({ ratings, currentUser, video, onAddRating }) {
-    const [rating, setRating] = useState(0)
+    const [rating, setRating] = useState(3)
 
     let ratingList = []
 
@@ -28,14 +28,16 @@ function Rating({ ratings, currentUser, video, onAddRating }) {
    
 
     return(
+        <p>Rating:
         <ReactStars
           count={5}
           value={rating}
           onChange={ratingChanged}
-          size={15}
+          size={20}
           activeColor="#ffd700"
           isHalf={true}
         />
+        </p>
      )
 }
 
