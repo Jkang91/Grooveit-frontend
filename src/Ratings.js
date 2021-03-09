@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Rating, Form } from 'semantic-ui-react';
+import { Rating } from 'semantic-ui-react';
 
 function Ratings({ currentUser, video, onAddRating, ratingAverage, addRating }) {
     // const ratingAverage = video.ratings.map((rating) => rating.rating).reduce((a,b) => a +b, 0)/video.ratings.length
@@ -31,10 +31,10 @@ function Ratings({ currentUser, video, onAddRating, ratingAverage, addRating }) 
             // setRating(e.target)
             // setVideo(e.target) => update the video.ratings array
             addRating(ratingValue)
-            console.log(ratingValue.rating)
-            console.log(ratingValue)
-            console.log(video.ratings)
-            console.log(e.target.id)
+            // console.log(ratingValue.rating)
+            // console.log(ratingValue)
+            // console.log(video.ratings)
+            // console.log(e.target.id)
         }) 
         // e.preventDefault();
         // setRating(rating)
@@ -50,7 +50,7 @@ function Ratings({ currentUser, video, onAddRating, ratingAverage, addRating }) 
 
     return (
         <div>
-            <Rating key={Math.random(100)} size="huge" maxRating={5} defaultRating={ratingAverage} value={ratingAverage} onRate={ratingChanged} />
+            <Rating icon="star" key={Math.random(100)} size="large" maxRating={5} defaultRating={ratingAverage} value={ratingAverage} onRate={ratingChanged} />
         </div>
     )
 }

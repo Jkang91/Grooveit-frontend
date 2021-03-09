@@ -1,4 +1,4 @@
-
+import { Form, Button } from "semantic-ui-react";
 function FavoriteForm({ currentUser, video, onAddFavorite}){
 
     function handleSubmit(e){
@@ -17,11 +17,9 @@ function FavoriteForm({ currentUser, video, onAddFavorite}){
         .then(favoritedVideo => onAddFavorite(favoritedVideo))
     }
     return(
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input type="submit" value="Favorite" />
-            </form>
-        </div>
+            <Form onSubmit={handleSubmit}>
+                <Button type="submit" content="Favorite" />
+            </Form>
     )
 }
 

@@ -58,6 +58,11 @@ function Displaycontainer({ currentUser, setCurrentUser }) {
         setFavorites(newFavList)
     }
 
+    function onDeleteUserVideo(deletedVideo) {
+        const updatedUserVideoList = userVideos.filter((video) => video.id !== deletedVideo.id)
+        setUserVideos(updatedUserVideoList)
+    }
+
 
 
     return (
@@ -71,10 +76,16 @@ function Displaycontainer({ currentUser, setCurrentUser }) {
                     danceVideos={danceVideos} 
                     currentUser={currentUser}
                     onAddFavorite={onAddFavorite}
+                    favorites={favorites}
                     />
                 </Route>
                 <Route path="/user_videos">
-                    <UservideoList userVideos={userVideos} currentUser={currentUser} onAddUserVideo={onAddUserVideo} />
+                    <UservideoList 
+                    userVideos={userVideos} 
+                    currentUser={currentUser} 
+                    onAddUserVideo={onAddUserVideo}
+                    onDeleteUserVideo={onDeleteUserVideo}
+                    />
                 </Route>
                 <Route path="/me">
                     <Profile currentUser={currentUser}/>

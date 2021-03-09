@@ -9,10 +9,9 @@ import { Card } from "semantic-ui-react";
 
 
 
-function Dancevideo({ video, currentUser, onAddFavorite, onAddRating }) {
+function Dancevideo({ video, currentUser, onAddFavorite, onAddRating, favorites }) {
     const [comments, setComments] = useState([])
     const [vid, setVid] = useState(video)
-    const [ratings, setRatings] = useState([])
     const [ratingAverage, setRatingAverage] = useState(0)
 
 
@@ -49,29 +48,32 @@ function Dancevideo({ video, currentUser, onAddFavorite, onAddRating }) {
         setComments(updatedCommentList)
     }
 
-    // const ratingAverage = video.ratings.map((rating) => rating.rating).reduce((a,b) => a +b, 0)/video.ratings.length
-
-
-    console.log(vid.ratings)
+    // const items = {
+    //     header: {video.title},
+    //     meta: {}
+    // }
+    console.log(currentUser.favorites)
+    console.log(video)
     return (
-        <Card>
-            <Card.Content>
+        <Card className="ui-card" color="blue" >
+            <Card.Content className="ui-content" style={{ backgroundColor: "silver" }} >
                 <div className="player-wrapper">
                     <ReactPlayer
                         className="react-player"
                         width={250}
                         height={200}
                         url={video.url}
-                        controls={true} />
+                        controls={true}
+                        light={true} />
                 </div>
                 <Card.Header>{video.title}</Card.Header>
                 <Card.Meta>
                     Category: {video.category}
                 </Card.Meta>
-                <Card.Description color="blue">
+                <Card.Description>
                     Difficulty: {video.difficulty_level}
                 </Card.Description>
-                {comments ? null : <h5>Comments:</h5>}
+                {comments ? <h5>Comments:</h5> : null }
                 <CommentList comments={comments} onDelete={onDelete} currentUser={currentUser} video={video} />
                 <Ratings currentUser={currentUser} video={video} ratingAverage={ratingAverage} addRating={addRating} onAddRating={onAddRating} />
                 <CommentForm
@@ -82,7 +84,7 @@ function Dancevideo({ video, currentUser, onAddFavorite, onAddRating }) {
             </Card.Content>
             <Card.Content extra>
                 <a>
-                    {currentUser.favorites.includes(video.id) ? 
+                    {favorites.map((f) => f.dance_video_id).includes(video.id) ? 
                     null
                     :                     
                     <FavoriteForm currentUser={currentUser} video={video} onAddFavorite={onAddFavorite} />

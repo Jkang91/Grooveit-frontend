@@ -3,7 +3,7 @@ import { useState } from "react";
 import FilterTutorial from "./FilterTutorial"
 import { Card } from "semantic-ui-react";
 
-function DancevideoList({ danceVideos, currentUser, onAddFavorite, onAddRating }) {
+function DancevideoList({ danceVideos, currentUser, onAddFavorite, onAddRating, favorites }) {
     const [searchTerm, setSearchTerm] = useState("")
     const [level, setLevel] = useState("All")
 
@@ -26,6 +26,7 @@ function DancevideoList({ danceVideos, currentUser, onAddFavorite, onAddRating }
             currentUser={currentUser}
             onAddFavorite={onAddFavorite}
             onAddRating={onAddRating}
+            favorites={favorites}
         />
     })
 

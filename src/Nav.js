@@ -2,6 +2,9 @@
 import { NavLink } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
+import GrooveitBlack from "./GrooveitBlack.png";
+import "./Stylesheet.css"
+import "./App.css"
 
 
 function Nav({ currentUser, setCurrentUser }) {
@@ -15,9 +18,10 @@ function Nav({ currentUser, setCurrentUser }) {
     }
 
     return (
-        <Menu color={"black"}>
+        <Menu className="header" style={{ color: "white" }} >
             {currentUser ? (
                 <>
+                    <img className="logo" src={GrooveitBlack} width={300} height={300} />
                     <Menu.Item>
                         <NavLink to="/favorites">Favorites</NavLink>
                     </Menu.Item>
@@ -28,14 +32,11 @@ function Nav({ currentUser, setCurrentUser }) {
                         <NavLink to="/user_videos">My videos</NavLink>
                     </Menu.Item>
                     <Menu.Item>
-                        <NavLink to="/me">Profile</NavLink>
-                    </Menu.Item>
-                    <Menu.Item>
                         <NavLink to="/logout" onClick={logOut}>Log out</NavLink>
                     </Menu.Item>
                     <Menu.Menu position="right">
                         <Menu.Item>
-                            <p>Logged in as: {currentUser.username}</p>
+                            <NavLink to="/me">{currentUser.username}</NavLink>
                         </Menu.Item>
                     </Menu.Menu>
                 </>

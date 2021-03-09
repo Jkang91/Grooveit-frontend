@@ -32,9 +32,7 @@ function Signup({ setCurrentUser }) {
                 setErrors(data.errors)
             } else {
                 const { user, token } = data;
-
                 localStorage.setItem("token", token)
-
                 setCurrentUser(user)
                 console.log(user)
                 history.push("/dance_videos")

@@ -1,9 +1,10 @@
 // import logo from './logo.svg';
-// import './App.css';
+import './App.css';
 import Nav from "./Nav";
 import "./Stylesheet.css";
 import Displaycontainer from "./Displaycontainer";
 import { useState, useEffect } from "react";
+import logo from "./GrooveitBlack.png"
 
 function App() {
   const [currentUser, setCurrentUser] = useState([]);

@@ -1,11 +1,19 @@
+import { Card } from "semantic-ui-react";
+
 function Profile({ currentUser }) {
 
-    return(
-        <div>
+    return (
+        <>
             <h1>Profile:</h1>
-            <h1>Name: {currentUser.name}</h1>
-            <h2>Username: {currentUser.username}</h2>
-        </div>
+            <Card>
+                <Card.Content>
+                    <Card.Header>Name: {currentUser.name}</Card.Header>
+                </Card.Content>
+                <Card.Content>
+                    <Card.Header>Username: {currentUser.username}</Card.Header>
+                </Card.Content>
+            </Card>
+        </>
     )
 }
 

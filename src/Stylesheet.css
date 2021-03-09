@@ -1,5 +1,7 @@
+
+
 body {
-    background-color: rgb(101, 143, 105);
+    background-color: rgb(181, 133, 185);
 }
 
 .display-container {
@@ -10,9 +12,39 @@ body {
 
 .player-wrapper {
     position: relative;
-    padding-top: 20% /* Player ratio: 100 / (1280 / 720) */
+    margin-left: 7%;
+    margin-bottom: 20px;
+    padding-top: 20%; /* Player ratio: 100 / (1280 / 720) */
+    border-radius: 25px;
 }
 
+
+Form.ui.form input[type="text"] {
+    width: 300px;
+}
+
+Form.ui.form input[type="file"] {
+    width: 300px;
+}
+
+Form.ui.form input[type="date"] {
+    width: 300px;
+}
+
+.react-player {
+    border-radius: 25px;
+}
+
+.ui-content {
+    background-color: blue;
+}
+
+Card.ui-card {
+    margin-top: 100px;
+}
+/* .header {
+    padding: 0%;
+} */
 /* .react-player {
     position: absolute;
     top: 30;

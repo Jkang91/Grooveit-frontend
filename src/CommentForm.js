@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Form } from "semantic-ui-react";
+import { Form, Button } from "semantic-ui-react";
 
 function CommentForm({ currentUser, videoId, onAddComment}) {
     const [comment, setComment] = useState('')
@@ -23,10 +23,10 @@ function CommentForm({ currentUser, videoId, onAddComment}) {
 
     
     return (
-        <form onSubmit={handleForm}>
-            <textarea name="comment" type="text" value={comment} onChange={(e) => setComment(e.target.value)} />
-            <input type="submit" value="New comment"/>
-        </form>
+        <Form onSubmit={handleForm}>
+            <Form.TextArea name="comment" type="text" value={comment} onChange={(e) => setComment(e.target.value)} />
+            <Button type="submit" content="New comment"/>
+        </Form>
     )
 }
 
