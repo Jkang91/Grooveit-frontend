@@ -1,6 +1,5 @@
 
 function FavoriteForm({ currentUser, video, onAddFavorite}){
-    const { title, url, category, difficulty_level } = video
 
     function handleSubmit(e){
         const danceVidObj = {

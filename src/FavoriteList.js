@@ -7,11 +7,9 @@ function FavoriteList({ favorites, currentUser, onDeleteFav }) {
         }  
     })
 
-    console.log(currentUser)
-    console.log(favoritesList)
     return (
         <div>
-            <h1>Favorites</h1>
+            <h1>Favorites List</h1>
             {favoritesList}
         </div>
     )

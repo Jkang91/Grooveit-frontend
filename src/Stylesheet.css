@@ -1,0 +1,9 @@
+body {
+    background-color: rgb(115, 115, 170);
+}
+
+.display-container {
+    display: flex;
+    flex-direction: column;
+    width: "50px"
+}

@@ -1,8 +1,9 @@
 import Dancevideo from "./Dancevideo";
 import { useState } from "react";
 import FilterTutorial from "./FilterTutorial"
+import { Card } from "semantic-ui-react";
 
-function DancevideoList({ danceVideos, currentUser, onAddFavorite }) {
+function DancevideoList({ danceVideos, currentUser, onAddFavorite, onAddRating }) {
     const [searchTerm, setSearchTerm] = useState("")
     const [level, setLevel] = useState("All")
 
@@ -11,31 +12,30 @@ function DancevideoList({ danceVideos, currentUser, onAddFavorite }) {
     })
 
     const filteredVideos2 = filteredVideos.filter((video) => {
-        console.log(video)
-        if (video.difficulty_level === level){
+        if (video.difficulty_level === level) {
             return video
-        } else if(level === "All"){
+        } else if (level === "All") {
             return video
         }
     })
 
-    console.log(filteredVideos2)
     const tutorialVideos = filteredVideos2.map((video) => {
         return <Dancevideo
             key={video.id}
             video={video}
             currentUser={currentUser}
             onAddFavorite={onAddFavorite}
+            onAddRating={onAddRating}
         />
     })
 
-    function handleChange2(e){
+    function handleChange2(e) {
         setLevel(e.target.value)
         console.log(e.target.value)
     }
 
     return (
-        <div>
+        <div className="w3-row-padding">
             <h1>Tutorials</h1>
             <FilterTutorial searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
             <label>Difficulty: </label>
@@ -45,7 +45,9 @@ function DancevideoList({ danceVideos, currentUser, onAddFavorite }) {
                 <option value="intermediate">intermediate</option>
                 <option value="advanced">advanced</option>
             </select>
-            {tutorialVideos}
+            <Card.Group itemsPerRow={4}>
+                {tutorialVideos}
+            </Card.Group>
         </div>
     )
 }

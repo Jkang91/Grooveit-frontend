@@ -1,6 +1,7 @@
 // import logo from './logo.svg';
 // import './App.css';
 import Nav from "./Nav";
+import "./Stylesheet.css";
 import Displaycontainer from "./Displaycontainer";
 import { useState, useEffect } from "react";
 
@@ -20,7 +21,6 @@ function App() {
         .then((user) => {
           // set the user in state
           setCurrentUser(user)
-          console.log(user)
         });
     }
   }, [])

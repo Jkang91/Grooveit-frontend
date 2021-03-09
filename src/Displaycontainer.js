@@ -12,6 +12,12 @@ function Displaycontainer({ currentUser, setCurrentUser }) {
     // const [comments, setComments] = useState([])
     const [favorites, setFavorites] = useState([])
     const [userVideos, setUserVideos] = useState([])
+    
+
+    // function onAddRating(ratingValue, video) {
+    //     const ratingAverage = video.ratings.map((rating) => rating.rating).reduce((a,b) => a +b, 0)/video.ratings.length
+    //     setDanceVideos()
+    // }
 
     useEffect(() => {
         fetch('http://localhost:3000/dance_videos')
@@ -51,6 +57,9 @@ function Displaycontainer({ currentUser, setCurrentUser }) {
         const newFavList = favorites.filter((favorite) => favorite.id !== favVideo.id)
         setFavorites(newFavList)
     }
+
+
+
     return (
         <div>
             <Switch>
@@ -61,13 +70,15 @@ function Displaycontainer({ currentUser, setCurrentUser }) {
                     <DancevideoList 
                     danceVideos={danceVideos} 
                     currentUser={currentUser}
-                    onAddFavorite={onAddFavorite} />
+                    onAddFavorite={onAddFavorite}
+                    // onAddRating={onAddRating}
+                    />
                 </Route>
                 <Route path="/user_videos">
                     <UservideoList userVideos={userVideos} currentUser={currentUser} onAddUserVideo={onAddUserVideo} />
                 </Route>
                 <Route path="/me">
-                    <Profile />
+                    <Profile currentUser={currentUser}/>
                 </Route>
                 <Route path="/signup">
                     <Signup setCurrentUser={setCurrentUser}/>

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 
 function FilterTutorial({ searchTerm, setSearchTerm }) {
     

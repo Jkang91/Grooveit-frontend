@@ -1,7 +1,10 @@
-function Profile() {
+function Profile({ currentUser }) {
+
     return(
         <div>
-            <h1>I am a profile</h1>
+            <h1>Profile:</h1>
+            <h1>Name: {currentUser.name}</h1>
+            <h2>Username: {currentUser.username}</h2>
         </div>
     )
 }
