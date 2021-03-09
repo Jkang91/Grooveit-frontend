@@ -1,11 +1,11 @@
 import CommentList from "./CommentList";
 import Ratings from "./Ratings";
-import ReactPlayer from "react-player";
+import ReactPlayer from "react-player/youtube";
 import CommentForm from "./CommentForm";
 import FavoriteForm from "./FavoriteForm";
 import { useState, useEffect } from "react";
 import "./Stylesheet.css"
-import { Rating } from "semantic-ui-react";
+import { Card } from "semantic-ui-react";
 
 
 
@@ -18,27 +18,24 @@ function Dancevideo({ video, currentUser, onAddFavorite, onAddRating }) {
 
     console.log("video", video.ratings)
     // console.log("video", video.comments)
-    
+
     useEffect(() => {
         fetch('http://localhost:3000/comments')
-        .then(resp => resp.json())
-        .then((comments) => {
-            setComments(comments)
-        })
+            .then(resp => resp.json())
+            .then((comments) => {
+                setComments(comments)
+            })
     }, [])
 
     const addRating = (newRating) => {
-        // update video.ratings array in state 
-         video.ratings.push(newRating)
-        //  const newVideoRatings = [...video.ratings, newRating.rating]
-        
-        setRatingAverage(video.ratings.map((rating) => rating.rating).reduce((a,b) => a +b, 0)/video.ratings.length)
+        video.ratings.push(newRating)
+        setRatingAverage(video.ratings.map((rating) => rating.rating).reduce((a, b) => a + b, 0) / video.ratings.length)
         setVid(video)
     }
-    console.log(video.ratings)
-    
+    console.log(currentUser.favorites)
+
     useEffect(() => {
-        setRatingAverage(video.ratings.map((rating) => rating.rating).reduce((a,b) => a +b, 0)/video.ratings.length)
+        setRatingAverage(video.ratings.map((rating) => rating.rating).reduce((a, b) => a + b, 0) / video.ratings.length)
     }, 0)
 
 
@@ -57,27 +54,42 @@ function Dancevideo({ video, currentUser, onAddFavorite, onAddRating }) {
 
     console.log(vid.ratings)
     return (
-        <div className="display-container">
-            <ReactPlayer width={250} height={200} url={video.url} />
-            <h3>{video.title}</h3>
-            <h4>Category: {video.category}</h4>
-            <h4>Difficulty: {video.difficulty_level}</h4>
-            {/* <h4>Average rating:<Rating key={Math.random(100)} size="huge" maxRating={5} defaultRating={ratingAverage} value={ratingAverage} />
-  </h4> */}
-            <Ratings currentUser={currentUser} video={video} ratingAverage={ratingAverage} addRating={addRating} onAddRating={onAddRating} />
-            <FavoriteForm
-                currentUser={currentUser}
-                video={video}
-                onAddFavorite={onAddFavorite} />
-            <div>
+        <Card>
+            <Card.Content>
+                <div className="player-wrapper">
+                    <ReactPlayer
+                        className="react-player"
+                        width={250}
+                        height={200}
+                        url={video.url}
+                        controls={true} />
+                </div>
+                <Card.Header>{video.title}</Card.Header>
+                <Card.Meta>
+                    Category: {video.category}
+                </Card.Meta>
+                <Card.Description color="blue">
+                    Difficulty: {video.difficulty_level}
+                </Card.Description>
+                {comments ? null : <h5>Comments:</h5>}
                 <CommentList comments={comments} onDelete={onDelete} currentUser={currentUser} video={video} />
-            </div>
-            <CommentForm
-                currentUser={currentUser}
-                videoId={video.id}
-                onAddComment={onAddComment}
-            />
-        </div>
+                <Ratings currentUser={currentUser} video={video} ratingAverage={ratingAverage} addRating={addRating} onAddRating={onAddRating} />
+                <CommentForm
+                    currentUser={currentUser}
+                    videoId={video.id}
+                    onAddComment={onAddComment}
+                />
+            </Card.Content>
+            <Card.Content extra>
+                <a>
+                    {currentUser.favorites.includes(video.id) ? 
+                    null
+                    :                     
+                    <FavoriteForm currentUser={currentUser} video={video} onAddFavorite={onAddFavorite} />
+                    }
+                </a>
+            </Card.Content>
+        </Card>
     )
 }
 

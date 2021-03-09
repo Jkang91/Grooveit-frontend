@@ -71,7 +71,6 @@ function Displaycontainer({ currentUser, setCurrentUser }) {
                     danceVideos={danceVideos} 
                     currentUser={currentUser}
                     onAddFavorite={onAddFavorite}
-                    // onAddRating={onAddRating}
                     />
                 </Route>
                 <Route path="/user_videos">

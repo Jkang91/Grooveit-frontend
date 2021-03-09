@@ -13,7 +13,6 @@ function CommentList({ comments, onDelete, currentUser, video }) {
     })
     return (
         <div>
-            <h3>Comments: </h3>
             {commentsList}
         </div>
     )
