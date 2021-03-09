@@ -13,9 +13,10 @@ function Dancevideo({ video, currentUser, onAddFavorite, onAddRating, favorites 
     const [comments, setComments] = useState([])
     const [vid, setVid] = useState(video)
     const [ratingAverage, setRatingAverage] = useState(0)
+    const [userFavorites, setUserFavorites] = useState(currentUser.favorites)
 
 
-    console.log("video", video.ratings)
+    // console.log("video", video.ratings)
     // console.log("video", video.comments)
 
     useEffect(() => {
@@ -37,6 +38,9 @@ function Dancevideo({ video, currentUser, onAddFavorite, onAddRating, favorites 
         setRatingAverage(video.ratings.map((rating) => rating.rating).reduce((a, b) => a + b, 0) / video.ratings.length)
     }, 0)
 
+    // useEffect(() => {
+    //     setUserFavorites(userFavorites.map((f) => f.dance_video_id).includes(video.id))
+    // }, [])
 
     function onAddComment(newComment) {
         const newCommentList = [...comments, newComment]
@@ -48,12 +52,23 @@ function Dancevideo({ video, currentUser, onAddFavorite, onAddRating, favorites 
         setComments(updatedCommentList)
     }
 
+    function addFavorite(favoritedVideo) {
+        const updatedFavList = [...favorites, favoritedVideo]
+        setUserFavorites(updatedFavList)
+    }
+
+    // const newFavoriteList = favorites.map((fav) => {
+    //     if(fav.map((favs) => { favs.user_id}).includes(currentUser.id)) {
+    //         return fav
+    //     }
+    // })
+
     // const items = {
     //     header: {video.title},
     //     meta: {}
     // }
     console.log(currentUser.favorites)
-    console.log(video)
+    
     return (
         <Card className="ui-card" color="blue" >
             <Card.Content className="ui-content" style={{ backgroundColor: "silver" }} >
@@ -73,7 +88,7 @@ function Dancevideo({ video, currentUser, onAddFavorite, onAddRating, favorites 
                 <Card.Description>
                     Difficulty: {video.difficulty_level}
                 </Card.Description>
-                {comments ? <h5>Comments:</h5> : null }
+                {comments ? <h5>Comments:</h5> : null}
                 <CommentList comments={comments} onDelete={onDelete} currentUser={currentUser} video={video} />
                 <Ratings currentUser={currentUser} video={video} ratingAverage={ratingAverage} addRating={addRating} onAddRating={onAddRating} />
                 <CommentForm
@@ -84,10 +99,10 @@ function Dancevideo({ video, currentUser, onAddFavorite, onAddRating, favorites 
             </Card.Content>
             <Card.Content extra>
                 <a>
-                    {favorites.map((f) => f.dance_video_id).includes(video.id) ? 
+                    {userFavorites.map((f) => f.dance_video_id).includes(video.id) ?
                     null
-                    :                     
-                    <FavoriteForm currentUser={currentUser} video={video} onAddFavorite={onAddFavorite} />
+                    :
+                    <FavoriteForm currentUser={currentUser} video={video} onAddFavorite={onAddFavorite} addFavorite={addFavorite} />
                     }
                 </a>
             </Card.Content>

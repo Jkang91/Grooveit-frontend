@@ -1,5 +1,5 @@
 import { Form, Button } from "semantic-ui-react";
-function FavoriteForm({ currentUser, video, onAddFavorite}){
+function FavoriteForm({ currentUser, video, onAddFavorite, addFavorite }){
 
     function handleSubmit(e){
         const danceVidObj = {
@@ -14,8 +14,11 @@ function FavoriteForm({ currentUser, video, onAddFavorite}){
             body: JSON.stringify(danceVidObj)
         })
         .then (resp => resp.json())
-        .then(favoritedVideo => onAddFavorite(favoritedVideo))
-    }
+        .then(favoritedVideo => {
+            onAddFavorite(favoritedVideo)
+            addFavorite(favoritedVideo)
+        }
+        )}
     return(
             <Form onSubmit={handleSubmit}>
                 <Button type="submit" content="Favorite" />
