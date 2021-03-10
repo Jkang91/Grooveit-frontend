@@ -12,8 +12,8 @@ function Ratings({ currentUser, video, onAddRating, ratingAverage, addRating }) 
 
     const ratingChanged = (e) => {
         // debugger
-        // if(currentUser.ratings.include?(rating)){
-            // fetch(`http://localhost:3000/ratings/${}`)
+        // if(currentUser.ratings.include(rating.id)) {
+        //     fetch(`http://localhost:3000/ratings/${rating.id}`)
         // }
         fetch(`http://localhost:3000/ratings`, {
             method: "POST",
@@ -26,27 +26,14 @@ function Ratings({ currentUser, video, onAddRating, ratingAverage, addRating }) 
         })
         .then(resp => resp.json())
         .then(ratingValue => {
-            // setRating(ratingValue)
-            // onAddRating(ratingValue, video)
-            // setRating(e.target)
-            // setVideo(e.target) => update the video.ratings array
             addRating(ratingValue)
-            // console.log(ratingValue.rating)
-            // console.log(ratingValue)
-            // console.log(video.ratings)
-            // console.log(e.target.id)
         }) 
         // e.preventDefault();
         // setRating(rating)
-        // console.log(e.target)
+        console.log(e.target)
+        console.log(e)
     };
     console.log(currentUser.ratings)
-    
-    // const avgRating = ratings.map((r) => {
-    //     if(r.id === rating.id) {
-    //         return <Rating size="huge" maxRating={5} defaultRating={r.rating} value={rating} onRate={ratingChanged} disabled/>
-    //     }
-    // })
 
     return (
         <div>

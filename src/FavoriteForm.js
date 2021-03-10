@@ -21,7 +21,7 @@ function FavoriteForm({ currentUser, video, onAddFavorite, addFavorite }){
         )}
     return(
             <Form onSubmit={handleSubmit}>
-                <Button type="submit" content="Favorite" />
+                <Button type="submit" content="Favorite" fluid/>
             </Form>
     )
 }

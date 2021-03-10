@@ -6,6 +6,7 @@ import UservideoList from "./UservideoList";
 import Profile from "./Profile";
 import Signup from "./Signup";
 import Login from "./Login";
+import "./Stylesheet.css"
 
 function Displaycontainer({ currentUser, setCurrentUser }) {
     const [danceVideos, setDanceVideos] = useState([])
@@ -66,7 +67,7 @@ function Displaycontainer({ currentUser, setCurrentUser }) {
 
 
     return (
-        <div>
+        <div className="display-container">
             <Switch>
                 <Route path="/favorites">
                     <FavoriteList currentUser={currentUser} favorites={favorites} onDeleteFav={onDeleteFav} />

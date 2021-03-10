@@ -40,15 +40,15 @@ function Login({ setCurrentUser }) {
         <div className="login">
             <Form onSubmit={handleLogin}>
                 <Form.Field>
-                <label>Username</label>
-                <input name="username" type="text" value={formData.username} onChange={handleChange} />
+                    <label>Username</label>
+                    <input name="username" type="text" value={formData.username} onChange={handleChange} />
                 </Form.Field>
                 <Form.Field>
-                <label>Password</label>
-                <input name="password" type="password" value={formData.password} onChange={handleChange} />
-                {errors.map((error) => {
-                    return <p style={{ color: "red" }} key={error}>{error}</p>;
-                })}
+                    <label>Password</label>
+                    <input name="password" type="password" value={formData.password} onChange={handleChange} />
+                    {errors.map((error) => {
+                        return <p style={{ color: "red" }} key={error}>{error}</p>;
+                    })}
                 </Form.Field>
                 <Button type="submit" content="Login" />
             </Form>

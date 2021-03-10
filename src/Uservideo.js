@@ -1,5 +1,6 @@
 import ReactPlayer from "react-player";
-import { Card } from "semantic-ui-react";
+import { Card, Button } from "semantic-ui-react";
+import "./Stylesheet.css";
 
 function Uservideo({ video, onDeleteUserVideo }) {
     function handleDelete() {
@@ -11,14 +12,13 @@ function Uservideo({ video, onDeleteUserVideo }) {
 
     return (
         <Card>
-            <Card.Content>
-                <h2>I am a video</h2>
+            <Card.Content style={{ backgroundColor: "silver" }}>
                 <Card.Header>{video.title}</Card.Header>
-                <ReactPlayer url={video.file} />
-                <Card.Meta>{video.date}</Card.Meta>
+                <ReactPlayer className='userVid' url={video.file} />
+                <Card.Header>{video.date}</Card.Header>
             </Card.Content>
             <Card.Content extra>
-                <button onClick={() => handleDelete()}>Delete</button>
+                <Button fluid onClick={() => handleDelete()}>Delete</Button>
             </Card.Content>
         </Card>
     )

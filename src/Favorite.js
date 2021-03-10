@@ -13,14 +13,14 @@ function Favorite({ favorite, onDeleteFav, currentUser }) {
 
     return (
         <Card>
-            <Card.Content style={{backgroundColor: "silver"}}>
+            <Card.Content className="favorite" style={{backgroundColor: "silver"}}>
                 <ReactPlayer url={dance_video.url} />
                 <Card.Header>{dance_video.title}</Card.Header>
                 <Card.Meta>Category: {dance_video.category}</Card.Meta>
                 <Card.Description>Difficulty: {dance_video.difficulty_level}</Card.Description>
             </Card.Content>
             <Card.Content extra>
-                {favorite.user_id === currentUser.id ? <Button onClick={() => handleDelete()}>Remove</Button> : false}
+                {favorite.user_id === currentUser.id ? <Button onClick={() => handleDelete()} fluid >Remove</Button> : false}
             </Card.Content>
         </Card>
     )

@@ -33,7 +33,7 @@ function UservideoForm({ currentUser, onAddUserVideo }) {
                 </Form.Field>
                 <Form.Field>
                     <label>My video:</label>
-                    <input name="file" type="file" accept=".mov" value={file} onChange={(e) => setFile(e.target.value)} />
+                    <input name="file" type="text" accept=".mov" value={file} onChange={(e) => setFile(e.target.value)} />
                 </Form.Field>
                 <Form.Field>
                     <label>Date:</label>

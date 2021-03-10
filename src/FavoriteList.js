@@ -12,9 +12,6 @@ function FavoriteList({ favorites, currentUser, onDeleteFav }) {
         <>
             <h1>Favorites List</h1>
             <Card.Group itemsPerRow={2}>
-                <div>
-                
-                </div>
                 {favoritesList}
             </Card.Group>
         </>

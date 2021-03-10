@@ -34,37 +34,33 @@ function DancevideoList({ danceVideos, currentUser, onAddFavorite, onAddRating, 
 
     const difficultyLevels = [
         { key: 'All', value: 'All', text: 'All' },
-        { key: 'beginner', value: 'beginner', text: 'beginner' },
-        { key: 'intermediate', value: 'intermediate', text: 'intermediate' },
-        { key: 'advanced', value: 'advanced', text: 'advanced' }
+        { key: 'difficulty_level', value: 'beginner', text: 'beginner' },
+        { key: 'difficulty_level', value: 'intermediate', text: 'intermediate' },
+        { key: 'difficulty_level', value: 'advanced', text: 'advanced' }
     ]
-
-    // function handleChange2(e) {
-    //     setLevel(e.target.value)
-    //     console.log(e.target.value)
-    // }
 
     function handleChange2(e, data) {
         setLevel(data.value)
         console.log(e.target.value)
     }
 
-    
+
 
     return (
         <div>
             <h1>Tutorials</h1>
-            <FilterTutorial searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
             <div className="filter">
-            <Dropdown 
-                onChange={handleChange2}
-                options={difficultyLevels}
-                placeholder="Select difficulty"
-                selection
-            />
+            <FilterTutorial className="filter-tutorial" searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+                <Dropdown
+                    onChange={handleChange2}
+                    options={difficultyLevels}
+                    placeholder="Select difficulty"
+                    selection
+                    style={{ height: "20px", marginTop: "45px" }}
+                />
             </div>
-            {/* <label>Difficulty: </label>
-            <select onChange={handleChange2}>
+            {/* <label>Difficulty: </label> */}
+            {/* <select onChange={handleChange2}>
                 <option value="All">All</option>
                 <option value="beginner">beginner</option>
                 <option value="intermediate">intermediate</option>

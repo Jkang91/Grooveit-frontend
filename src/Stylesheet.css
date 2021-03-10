@@ -2,12 +2,18 @@
 
 body {
     background-color: rgb(181, 133, 185);
+    margin: auto;
+}
+
+h1 {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+
 }
 
 .display-container {
     display: flex;
     flex-direction: column;
-    width: "50px";
+    margin: 20px;
 }
 
 .player-wrapper {
@@ -29,6 +35,10 @@ body {
     justify-content: center;
     text-align: center;
 }
+
+Form.ui.form {
+    padding: 10px;
+}
 Form.ui.form input[type="text"] {
     width: 300px;
 }
@@ -46,7 +56,7 @@ Form.ui.form input[type="password"] {
 }
 
 .react-player {
-    border-radius: 25px;
+    border-radius: 100px;
 }
 
 .ui-content {
@@ -56,6 +66,34 @@ Form.ui.form input[type="password"] {
 .ui-card {
     margin-top: 50px;
 }
+
+.ui.search {
+    padding-right: 10px;
+}
+
+.filter-tutorial {
+    margin-right: 100px;
+}
+
+.content favorite {
+    margin-top: 50px;
+}
+
+.filter {
+    display: flex;
+    justify-content: flex-start;
+    align-content: space-around;
+    padding-bottom: 20px;
+}
+
+.userVid {
+    margin-left: -4px;
+}
+.header a {
+    color: black;
+    padding: 10px;
+}
+
 
 /* .header {
     padding: 0%;
