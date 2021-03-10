@@ -1,3 +1,4 @@
+import { Search } from 'semantic-ui-react';
 
 function FilterTutorial({ searchTerm, setSearchTerm }) {
     
@@ -9,9 +10,9 @@ function FilterTutorial({ searchTerm, setSearchTerm }) {
     return (
         <div>
             <h2>Search Videos</h2>
-            <input 
+            <Search
             value={searchTerm} 
-            onChange={handleChange}
+            onSearchChange={handleChange}
             name="name"
             type="text"
             placeholder="Search videos here...." 

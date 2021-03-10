@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { Form, Button } from 'semantic-ui-react';
 
 function Signup({ setCurrentUser }) {
     const [formData, setFormData] = useState({
@@ -12,50 +13,52 @@ function Signup({ setCurrentUser }) {
 
     const history = useHistory()
 
-    function handleChange(e){
+    function handleChange(e) {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value,
         })
     }
 
-    function handleSignup(e){
+    function handleSignup(e) {
         e.preventDefault()
         fetch("http://localhost:3000/signup", {
             method: "POST",
-            headers: { "Content-Type": "application/json"},
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(formData)
         })
-        .then(resp => resp.json())
-        .then((data) => {
-            if (data.errors) {
-                setErrors(data.errors)
-            } else {
-                const { user, token } = data;
-                localStorage.setItem("token", token)
-                setCurrentUser(user)
-                console.log(user)
-                history.push("/dance_videos")
-            }
-        })
+            .then(resp => resp.json())
+            .then((data) => {
+                if (data.errors) {
+                    setErrors(data.errors)
+                } else {
+                    const { user, token } = data;
+                    localStorage.setItem("token", token)
+                    setCurrentUser(user)
+                    console.log(user)
+                    history.push("/dance_videos")
+                }
+            })
     }
 
 
     return (
-        <div>
-            <form onSubmit={handleSignup} >
-                <h2>Sign up</h2>
-                <label>Name</label>
-                <input name="name" type="text" value={formData.name} onChange={handleChange} />
-
-                <label>Username</label>
-                <input name="username" type="text" value={formData.username} onChange={handleChange} />
-
-                <label>Password</label>
-                <input name="password" type="password" value={formData.password} onChange={handleChange} />
-
-                <input type="submit" value="Signup"/>
-            </form>
+        <div className="signup">
+            <Form onSubmit={handleSignup} >
+                <Form.Field>
+                    <label>Name</label>
+                    <input name="name" type="text" value={formData.name} onChange={handleChange} />
+                </Form.Field>
+                <Form.Field>
+                    <label>Username</label>
+                    <input name="username" type="text" value={formData.username} onChange={handleChange} />
+                </Form.Field>
+                <Form.Field>
+                    <label>Password</label>
+                    <input name="password" type="password" value={formData.password} onChange={handleChange} />
+                </Form.Field>
+                <Button type="submit" content="Signup" />
+            </Form>
         </div>
     )
 }

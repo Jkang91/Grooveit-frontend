@@ -12,13 +12,23 @@ body {
 
 .player-wrapper {
     position: relative;
-    margin-left: 7%;
+    margin-left: 8%;
+    margin-right: 5px;
+    margin-top: -50px;
     margin-bottom: 20px;
     padding-top: 20%; /* Player ratio: 100 / (1280 / 720) */
     border-radius: 25px;
 }
 
+.login {
+    justify-content: center;
+    text-align: center;
+}
 
+.signup {
+    justify-content: center;
+    text-align: center;
+}
 Form.ui.form input[type="text"] {
     width: 300px;
 }
@@ -31,6 +41,10 @@ Form.ui.form input[type="date"] {
     width: 300px;
 }
 
+Form.ui.form input[type="password"] {
+    width: 300px;
+}
+
 .react-player {
     border-radius: 25px;
 }
@@ -39,9 +53,10 @@ Form.ui.form input[type="date"] {
     background-color: blue;
 }
 
-Card.ui-card {
-    margin-top: 100px;
+.ui-card {
+    margin-top: 50px;
 }
+
 /* .header {
     padding: 0%;
 } */

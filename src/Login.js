@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { Form, Button } from 'semantic-ui-react';
+import "./Stylesheet.css"
 
 function Login({ setCurrentUser }) {
     const [formData, setFormData] = useState({
@@ -35,18 +37,21 @@ function Login({ setCurrentUser }) {
     }
 
     return (
-        <div>
-            <form onSubmit={handleLogin}>
+        <div className="login">
+            <Form onSubmit={handleLogin}>
+                <Form.Field>
                 <label>Username</label>
                 <input name="username" type="text" value={formData.username} onChange={handleChange} />
-
+                </Form.Field>
+                <Form.Field>
                 <label>Password</label>
                 <input name="password" type="password" value={formData.password} onChange={handleChange} />
                 {errors.map((error) => {
                     return <p style={{ color: "red" }} key={error}>{error}</p>;
                 })}
-                <input type="submit" value="Login" />
-            </form>
+                </Form.Field>
+                <Button type="submit" content="Login" />
+            </Form>
         </div>
     )
 }

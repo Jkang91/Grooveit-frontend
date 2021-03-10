@@ -18,10 +18,11 @@ function Nav({ currentUser, setCurrentUser }) {
     }
 
     return (
+        <>
         <Menu className="header" style={{ color: "white" }} >
+            <img className="logo" src={GrooveitBlack} width={300} height={300} />
             {currentUser ? (
                 <>
-                    <img className="logo" src={GrooveitBlack} width={300} height={300} />
                     <Menu.Item>
                         <NavLink to="/favorites">Favorites</NavLink>
                     </Menu.Item>
@@ -52,6 +53,7 @@ function Nav({ currentUser, setCurrentUser }) {
                 </>
             }
         </Menu>
+        </>
     )
 }
 

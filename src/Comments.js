@@ -1,4 +1,5 @@
-import { Comment } from "semantic-ui-react"
+import { Comment, Button } from "semantic-ui-react"
+
 function Comments({ comm, onDelete, currentUser }) {
     const { comment } = comm
 
@@ -16,7 +17,7 @@ function Comments({ comm, onDelete, currentUser }) {
             <Comment.Text>
                 <p>{comment}</p>
             </Comment.Text>
-            {comm.user.id === currentUser.id? <button onClick={() => handleDelete()}>Delete</button> : false}
+            {comm.user.id === currentUser.id? <Button onClick={() => handleDelete()} content="Delete" size="mini"/> : false}
             </Comment.Content>
         </Comment>
     )

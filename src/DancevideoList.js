@@ -1,7 +1,9 @@
 import Dancevideo from "./Dancevideo";
 import { useState } from "react";
 import FilterTutorial from "./FilterTutorial"
-import { Card } from "semantic-ui-react";
+import { Card, Dropdown } from "semantic-ui-react";
+import "./Stylesheet.css";
+
 
 function DancevideoList({ danceVideos, currentUser, onAddFavorite, onAddRating, favorites }) {
     const [searchTerm, setSearchTerm] = useState("")
@@ -30,22 +32,44 @@ function DancevideoList({ danceVideos, currentUser, onAddFavorite, onAddRating, 
         />
     })
 
-    function handleChange2(e) {
-        setLevel(e.target.value)
+    const difficultyLevels = [
+        { key: 'All', value: 'All', text: 'All' },
+        { key: 'beginner', value: 'beginner', text: 'beginner' },
+        { key: 'intermediate', value: 'intermediate', text: 'intermediate' },
+        { key: 'advanced', value: 'advanced', text: 'advanced' }
+    ]
+
+    // function handleChange2(e) {
+    //     setLevel(e.target.value)
+    //     console.log(e.target.value)
+    // }
+
+    function handleChange2(e, data) {
+        setLevel(data.value)
         console.log(e.target.value)
     }
 
+    
+
     return (
-        <div className="w3-row-padding">
+        <div>
             <h1>Tutorials</h1>
             <FilterTutorial searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-            <label>Difficulty: </label>
+            <div className="filter">
+            <Dropdown 
+                onChange={handleChange2}
+                options={difficultyLevels}
+                placeholder="Select difficulty"
+                selection
+            />
+            </div>
+            {/* <label>Difficulty: </label>
             <select onChange={handleChange2}>
                 <option value="All">All</option>
                 <option value="beginner">beginner</option>
                 <option value="intermediate">intermediate</option>
                 <option value="advanced">advanced</option>
-            </select>
+            </select> */}
             <Card.Group itemsPerRow={4}>
                 {tutorialVideos}
             </Card.Group>
