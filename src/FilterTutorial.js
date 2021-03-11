@@ -1,4 +1,5 @@
 import { Search } from 'semantic-ui-react';
+import "./Stylesheet.css"
 
 function FilterTutorial({ searchTerm, setSearchTerm }) {
     

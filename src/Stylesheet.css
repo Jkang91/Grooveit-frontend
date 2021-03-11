@@ -3,7 +3,7 @@ body {
     margin: auto;
 }
 
-h1 {
+h1, h2 {
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
 
@@ -63,9 +63,10 @@ Form.ui.form input[type="password"] {
 .rating {
     padding-bottom: 10px;
 }
-.ui-content {
-    background-color: blue;
-}
+
+/* .ui-content {
+    background-color: ;
+} */
 
 .ui-card {
     margin-top: 50px;
@@ -110,6 +111,8 @@ Form.ui.form input[type="password"] {
 .comment {
     padding-bottom: 10px;
 }
+
+
 
 
 /* .header {

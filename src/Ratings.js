@@ -2,14 +2,7 @@ import { useState } from 'react';
 import { Rating } from 'semantic-ui-react';
 
 function Ratings({ currentUser, video, onAddRating, ratingAverage, addRating }) {
-    // const ratingAverage = video.ratings.map((rating) => rating.rating).reduce((a,b) => a +b, 0)/video.ratings.length
-    // const [ratingAvg, ]
-    // const [rating, setRating] = useState(null)
-
-    // setRating(video.ratings.sum / video.ratings.length)
-
-    // console.log("rate", video.ratings)
-
+    
     const ratingChanged = (e) => {
         // debugger
         // if(currentUser.ratings.include(rating.id)) {
@@ -33,7 +26,7 @@ function Ratings({ currentUser, video, onAddRating, ratingAverage, addRating }) 
         console.log(e.target)
         console.log(e)
     };
-    console.log(currentUser.ratings)
+    // console.log(currentUser.ratings)
 
     return (
         <div>

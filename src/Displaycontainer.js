@@ -91,6 +91,7 @@ function Displaycontainer({ currentUser, setCurrentUser }) {
                 <Route path="/me">
                     <Profile currentUser={currentUser} />
                 </Route>
+
                 <Route path="/signup">
                     <Signup setCurrentUser={setCurrentUser} />
                 </Route>
