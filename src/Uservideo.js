@@ -13,9 +13,15 @@ function Uservideo({ video, onDeleteUserVideo }) {
     return (
         <Card>
             <Card.Content style={{ backgroundColor: "silver" }}>
-                <Card.Header>{video.title}</Card.Header>
-                <ReactPlayer className='userVid' url={video.file} />
-                <Card.Header>{video.date}</Card.Header>
+                <Card.Header className="user-header">
+                    {video.title}
+                </Card.Header>
+                <div className="user-video">
+                    <ReactPlayer className='userVid' url={video.file} />
+                </div>
+                <Card.Header className="user-header">
+                    {video.date}
+                </Card.Header>
             </Card.Content>
             <Card.Content extra>
                 <Button fluid onClick={() => handleDelete()}>Delete</Button>

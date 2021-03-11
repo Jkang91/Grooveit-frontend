@@ -81,8 +81,9 @@ function Dancevideo({ video, currentUser, onAddFavorite, onAddRating, favorites 
                         controls={true}
                         light={true} />
                 </div>
+                <Ratings className="rating" currentUser={currentUser} video={video} ratingAverage={ratingAverage} addRating={addRating} onAddRating={onAddRating} />
                 <Card.Header>{video.title}</Card.Header>
-                <Card.Meta>
+                <Card.Meta style={{ color: "blue" }}>
                     Category: {video.category}
                 </Card.Meta>
                 <Card.Description>
@@ -90,7 +91,6 @@ function Dancevideo({ video, currentUser, onAddFavorite, onAddRating, favorites 
                 </Card.Description>
                 {comments ? <h5>Comments:</h5> : null}
                 <CommentList comments={comments} onDelete={onDelete} currentUser={currentUser} video={video} />
-                <Ratings currentUser={currentUser} video={video} ratingAverage={ratingAverage} addRating={addRating} onAddRating={onAddRating} />
                 <CommentForm
                     currentUser={currentUser}
                     videoId={video.id}

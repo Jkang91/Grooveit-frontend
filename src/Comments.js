@@ -1,4 +1,5 @@
 import { Comment, Button } from "semantic-ui-react"
+import "./Stylesheet.css";
 
 function Comments({ comm, onDelete, currentUser }) {
     const { comment } = comm
@@ -11,7 +12,7 @@ function Comments({ comm, onDelete, currentUser }) {
     }
    
     return (
-        <Comment>
+        <Comment className="comment">
             <Comment.Content>
             <Comment.Author as="a">{comm.user.username}: </Comment.Author>
             <Comment.Text>
