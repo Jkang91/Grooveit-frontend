@@ -22,7 +22,7 @@ function Nav({ currentUser, setCurrentUser }) {
     return (
         <>
             <Menu borderless size="massive" className="header" color="red" >
-                <img className="logo" src={GrooveitBlack} style={{ width: "100px"}} />
+                <img className="logo" src={GrooveitBlack} style={{ width: "100px" }} />
                 {currentUser ? (
                     <>
                         <Menu.Item as="a">
@@ -36,7 +36,9 @@ function Nav({ currentUser, setCurrentUser }) {
                         </Menu.Item>
                         <Menu.Menu position="right">
                             <Menu.Item as="a">
-                                <NavLink to="/me">{currentUser.username}</NavLink>
+                                <NavLink to="/me">
+                                    {currentUser.username}
+                                </NavLink>
                             </Menu.Item>
                             <Menu.Item as="a">
                                 <NavLink to="/login" onClick={logOut}>Log out</NavLink>
