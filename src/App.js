@@ -14,6 +14,7 @@ function App() {
     if (token) {
       console.log(token)
       fetch(`${process.env.REACT_APP_RAILS_URL}/me`, {
+        // fetch(`https://murmuring-brook-67596.herokuapp.com`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
