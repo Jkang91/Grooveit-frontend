@@ -13,7 +13,7 @@ function Dancevideo({ video, currentUser, onAddFavorite, onAddRating, favorites 
     const [comments, setComments] = useState([])
     const [vid, setVid] = useState(video)
     const [ratingAverage, setRatingAverage] = useState(0)
-    const [userFavorites, setUserFavorites] = useState(currentUser.favorites)
+    const [userFavorites, setUserFavorites] = useState([])
 
 
     // console.log("video", video.ratings)
