@@ -22,7 +22,7 @@ function Signup({ setCurrentUser }) {
 
     function handleSignup(e) {
         e.preventDefault()
-        fetch("http://localhost:3000/signup", {
+        fetch(`${process.env.REACT_APP_RAILS_URL}/signup`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(formData)
