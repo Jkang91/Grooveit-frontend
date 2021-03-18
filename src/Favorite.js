@@ -6,7 +6,7 @@ function Favorite({ favorite, onDeleteFav, currentUser }) {
     const { dance_video } = favorite
 
     function handleDelete() {
-        fetch(`http://localhost:3000/favorites/${favorite.id}`, {
+        fetch(`${process.env.REACT_APP_RAILS_URL}/favorites/${favorite.id}`, {
             method: "DELETE"
         })
             .then(deletedComment => onDeleteFav(favorite))

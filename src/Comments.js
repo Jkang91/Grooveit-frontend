@@ -5,7 +5,7 @@ function Comments({ comm, onDelete, currentUser }) {
     const { comment } = comm
 
     function handleDelete() {
-        fetch(`http://localhost:3000/comments/${comm.id}`, {
+        fetch(`${process.env.REACT_APP_RAILS_URL}/comments/${comm.id}`, {
             method: "DELETE"
         })
         .then(deletedComment => onDelete(comm))

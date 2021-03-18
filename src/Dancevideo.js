@@ -20,7 +20,7 @@ function Dancevideo({ video, currentUser, onAddFavorite, onAddRating, favorites 
     // console.log("video", video.comments)
 
     useEffect(() => {
-        fetch('http://localhost:3000/comments')
+        fetch(`${process.env.REACT_APP_RAILS_URL}/comments`)
             .then(resp => resp.json())
             .then((comments) => {
                 setComments(comments)

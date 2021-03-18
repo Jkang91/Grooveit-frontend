@@ -6,7 +6,7 @@ function CommentForm({ currentUser, videoId, onAddComment}) {
 
     function handleForm(e){
         e.preventDefault()
-        fetch(`http://localhost:3000/dance_videos/${videoId}/comments`, {
+        fetch(`${process.env.REACT_APP_RAILS_URL}/dance_videos/${videoId}/comments`, {
             method: 'POST',
             headers: { "Content-Type": "application/json"},
             body: JSON.stringify({

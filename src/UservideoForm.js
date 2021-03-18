@@ -9,7 +9,7 @@ function UservideoForm({ currentUser, onAddUserVideo }) {
 
     function handleForm(e) {
         e.preventDefault()
-        fetch(`http://localhost:3000/user_videos`, {
+        fetch(`${process.env.REACT_APP_RAILS_URL}/user_videos`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

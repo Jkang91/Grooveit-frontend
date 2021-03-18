@@ -21,7 +21,7 @@ function Displaycontainer({ currentUser, setCurrentUser }) {
     // }
 
     useEffect(() => {
-        fetch('http://localhost:3000/dance_videos')
+        fetch(`${process.env.REACT_APP_RAILS_URL}/dance_videos`)
             .then(resp => resp.json())
             .then((videos) => {
                 setDanceVideos(videos)
@@ -29,7 +29,7 @@ function Displaycontainer({ currentUser, setCurrentUser }) {
     }, [])
 
     useEffect(() => {
-        fetch(`http://localhost:3000/favorites`)
+        fetch(`${process.env.REACT_APP_RAILS_URL}/favorites`)
             .then(resp => resp.json())
             .then((favorites) => {
                 setFavorites(favorites)
@@ -37,7 +37,7 @@ function Displaycontainer({ currentUser, setCurrentUser }) {
     }, [])
 
     useEffect(() => {
-        fetch('http://localhost:3000/user_videos')
+        fetch(`${process.env.REACT_APP_RAILS_URL}/user_videos`)
             .then(resp => resp.json())
             .then((vids) => {
                 setUserVideos(vids)

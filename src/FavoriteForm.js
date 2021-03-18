@@ -8,7 +8,7 @@ function FavoriteForm({ currentUser, video, onAddFavorite, addFavorite }){
         }
     
         e.preventDefault()
-        fetch(`http://localhost:3000/favorites`, {
+        fetch(`${process.env.REACT_APP_RAILS_URL}/favorites`, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(danceVidObj)

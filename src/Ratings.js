@@ -8,7 +8,7 @@ function Ratings({ currentUser, video, onAddRating, ratingAverage, addRating }) 
         // if(currentUser.ratings.include(rating.id)) {
         //     fetch(`http://localhost:3000/ratings/${rating.id}`)
         // }
-        fetch(`http://localhost:3000/ratings`, {
+        fetch(`${process.env.REACT_APP_RAILS_URL}/ratings`, {
             method: "POST",
             headers: { "Content-Type": "application/json"},
             body: JSON.stringify({

@@ -4,7 +4,7 @@ import "./Stylesheet.css";
 
 function Uservideo({ video, onDeleteUserVideo }) {
     function handleDelete() {
-        fetch(`http://localhost:3000/user_videos/${video.id}`, {
+        fetch(`${process.env.REACT_APP_RAILS_URL}/user_videos/${video.id}`, {
             method: "DELETE"
         })
             .then(deletedVideo => onDeleteUserVideo(video))
