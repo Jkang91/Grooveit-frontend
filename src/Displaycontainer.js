@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import FavoriteList from "./FavoriteList";
 import DancevideoList from "./DancevideoList";
 import UservideoList from "./UservideoList";
+import Welcome from "./Welcome";
 import Profile from "./Profile";
 import Signup from "./Signup";
 import Login from "./Login";
@@ -69,6 +70,9 @@ function Displaycontainer({ currentUser, setCurrentUser }) {
     return (
         <div className="display-container">
             <Switch>
+                <Route exact path="/">
+                    <Welcome />
+                </Route>
                 <Route path="/favorites">
                     <FavoriteList currentUser={currentUser} favorites={favorites} onDeleteFav={onDeleteFav} />
                 </Route>
@@ -95,7 +99,7 @@ function Displaycontainer({ currentUser, setCurrentUser }) {
                 <Route path="/signup">
                     <Signup setCurrentUser={setCurrentUser} />
                 </Route>
-                <Route path="/login" exact to="/">
+                <Route path="/login">
                     <Login setCurrentUser={setCurrentUser} />
                 </Route>
             </Switch>

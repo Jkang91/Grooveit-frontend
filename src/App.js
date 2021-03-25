@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import logo from "./GrooveitBlack.png"
 
 function App() {
-  const [currentUser, setCurrentUser] = useState([]);
+  const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
     const token = localStorage.getItem("token");

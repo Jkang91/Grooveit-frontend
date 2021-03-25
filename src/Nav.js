@@ -23,6 +23,10 @@ function Nav({ currentUser, setCurrentUser }) {
         <>
             <Menu borderless size="massive" className="header" color="red" >
                 <img className="logo" src={GrooveitBlack} style={{ width: "100px" }} />
+                        <Menu.Item as="a">
+                            <NavLink to="/">Welcome</NavLink>
+                        </Menu.Item>
+
                 {currentUser ? (
                     <>
                         <Menu.Item as="a">
