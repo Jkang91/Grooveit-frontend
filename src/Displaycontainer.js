@@ -26,6 +26,7 @@ function Displaycontainer({ currentUser, setCurrentUser }) {
             .then(resp => resp.json())
             .then((videos) => {
                 setDanceVideos(videos)
+                console.log(videos)
             })
     }, [])
 

@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Form, Button } from "semantic-ui-react";
 import { GoogleLogin } from "react-google-login";
+// import { GoogleAPI, GoogleLogin, GoogleLogout } from "react-google-oauth";
 import axios from "axios";
 import "./Stylesheet.css";
-// import { useDispatch } from 'react-redux';
 
 function Login({ setCurrentUser }) {
   const [formData, setFormData] = useState({
@@ -41,23 +41,24 @@ function Login({ setCurrentUser }) {
   }
 
   function responseGoogle(response) {
-      if (response.tokenId) {
-          axios.post("/login/google", null, {
-              headers: {
-                  Authorization: `Bearer ${response.tokenId}`
-              },
-          })
-          .then((response) => {
-              const { user, token } = response.data;
-              localStorage.setItem("token", token);
-              axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
-              setCurrentUser(user);
-              history.push("/");
-          })
-          .catch((error) => {
-              setErrors(error.response.data.errors)
-          });
-      }
+    if (response.tokenId) {
+      axios
+        .post("/login/google", null, {
+          headers: {
+            Authorization: `Bearer ${response.tokenId}`,
+          },
+        })
+        .then((response) => {
+          const { user, token } = response.data;
+          localStorage.setItem("token", token);
+          axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+          setCurrentUser(user);
+          history.push("/");
+        })
+        .catch((error) => {
+          setErrors(error.response.data.errors);
+        });
+    }
   }
 
   // const onSuccess = async (res) => {
@@ -74,6 +75,29 @@ function Login({ setCurrentUser }) {
   // const onFailure = async (res) => {
   //   console.log("Google Sign In was unsuccessful...")
   // };
+  // responseGoogle = (response) => {
+  //   var token = google_response.Zi;
+  //   const requestOptions = {
+  //     method: 'POST',
+  //     headers: {
+  //       'Authorization': `Bearer ${google_response.Zi.accessToken}`,
+  //       'Content-Type': 'application/json',
+  //       'access_token': `${google_response.Zi.accessToken}`
+  //     },
+  //     body: JSON.stringify(token)
+  //   }
+  // }
+
+  // return fetch(`backend rails api url to google sign in path`, requestOptions)
+  // .then(response => {
+  //   Cookie.set('accesstoken', response.headers.get('access-token'), {
+  //     expires: 7
+  //   });
+  //   Cookie.set('client',response.headers.get('client'), {expires: 7});
+  //   Cookie.set('tokentype',response.headers.get('token-type'), {expires: 7});
+  //   Cookie.set('expiry',response.headers.get('expiry'), {expires: 7});
+  //   Cookie.set('uid', response.headers.get('uid'),{expires: 7});
+  // })
 
   return (
     <div className="login">
@@ -112,6 +136,19 @@ function Login({ setCurrentUser }) {
         onFailure={responseGoogle}
         cookiePolicy={"single_host_origin"}
       />
+      {/* <GoogleAPI className="GoogleLogin" clientId="Your client API Key">
+        <div>
+          <GoogleLogin
+            height="10"
+            width="500px"
+            backgroundColor="#4285f4"
+            access="offline"
+            scope="email profile"
+            onLoginSuccess={this.responseGoogle}
+            onFailure={this.responseGoogle}
+          />
+        </div>
+      </GoogleAPI> */}
     </div>
   );
 }
